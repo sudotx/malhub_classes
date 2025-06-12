@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Meal Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <button id="generateBtn" onclick="getMeal()">Suprise me</button>
+        <div id="loading">
+            <div class="spinner"></div>
+            Please hang tight as we fetch a recipe from around the globe just for you...
+        </div>
+        <div id="meal">
+            <div class="meal-header">
+                <img id="meal-image" src="" alt="Meal image">
+                <div class="meal-info">
+                    <h2 id="meal-title"></h2>
+                    <p id="meal-category"></p>
+                    <p id="meal-area"></p>
+                </div>
+            </div>
+            <h3>Instructions</h3>
+            <p id="meal-instructions"></p>
+            <h3>Ingredients</h3>
+            <div id="ingredients"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

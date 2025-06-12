@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #image-lineup {
+            text-align: center;
+        }
+
+        .gallery-item img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .gallery-item {
+            display: inline-block;
+            margin: 10px;
+            border: 5px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="image-lineup">
+        <h1>Image Gallery</h1>
+    </div>
+
+    <script>
+        const imageUrls = [
+            "https://picsum.photos/id/237/200/300",
+            "https://picsum.photos/seed/picsum/200/300",
+            "https://picsum.photos/seed/picsum/200/300",
+            "https://picsum.photos/seed/picsum/200/300",
+        ]
+
+        const Descriptions = [
+            "Description 1",
+            "Description 2",
+            "Description 3",
+            "Description 4",
+        ]
+
+        for (let i = 0; i < imageUrls.length; i++) {
+            const img = document.createElement("img");
+            img.src = imageUrls[i];
+            img.className = "gallery-item";
+            document.getElementById("image-lineup").appendChild(img);
+        }
+
+    </script>
+</body>
+
+</html>

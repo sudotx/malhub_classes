@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallerie</title>
+
+    <style>
+        body {
+            text-align: center;
+        }
+
+        img {
+            margin: 25px;
+            border: 3px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="images">
+        <h1>Welcome to my Gallery</h1>
+    </div>
+
+    <script>
+        const imageLinks = [
+            "https://picsum.photos/id/237/200/300",
+            "https://picsum.photos/id/237/200/300",
+            "https://picsum.photos/id/237/200/300",
+        ]
+
+        for (let i = 0; i < imageLinks.length; i++) {
+            const img = document.createElement("img");
+            img.src = imageLinks[i];
+            document.getElementById("images").appendChild(img);
+        }
+
+    </script>
+
+    <img src="" alt="">
+
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
+
+.navbar {
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.categories {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.filter-options {
+  background-color: #ddd;
+  padding: 10px 20px;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  justify-content: space-evenly;
+}
+
+.filter-button {
+  background-color: #fff;
+  border: 1px solid #999;
+  border-radius: 20px;
+  padding: 5px 15px;
+  cursor: pointer;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.grid-item {
+  background-color: white;
+  border: 2px solid black;
+  padding: 10px;
+  flex-direction: column;
+}
+
+.grid-item img {
+  width: fit-content;
+}
+.grid-item p {
+  text-align: center;
+}
+
+.item-details {
+  text-align: left;
+}
+
+.item-details p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.item-name {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.in-stock {
+  color: green;
+}
+
+.out-of-stock {
+  color: red;
+}

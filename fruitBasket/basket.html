@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Fruit List</h1>
+    <input type="text" id="fruitInput" placeholder="Enter a fruit name" />
+    <button id="addFruitButton">Click Me</button>
+    <div id="fruitlist"></div>
+
+    <script>
+        const fruits = []
+        const textInput = document.getElementById('fruitInput');
+        const addFruitButton = document.getElementById('addFruitButton');
+        const fruitList = document.getElementById('fruitlist');
+
+        addFruitButton.addEventListener('click', function () {
+            const userInput = textInput.value.trim()
+            if (userInput) {
+                fruits.push(userInput)
+                fruitInput.value = ""; // Clear input
+                updateFruitList();
+            } else {
+                alert("Please enter a fruit name.")
+            }
+        });
+
+        function updateFruitList() {
+            fruitList.innerHTML = ""; // Clear current list
+            for (let i = 0; i < fruits.length; i++) {
+                const li = document.createElement('li');
+                li.textContent = fruits[i]; // Set the text content
+                fruitList.appendChild(li); // Append to the fruit list
+            }
+        }
+    </script>
+</body>
+
+</html>

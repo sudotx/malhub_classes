@@ -1,0 +1,167 @@
+#feed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.instagram-post {
+  width: 100%;
+  max-width: 600px;
+  background-color: #ffffff;
+  border: 1px solid #dbdbdb;
+  border-radius: 3px;
+  margin-bottom: 2rem;
+  transition: transform 0.5s ease-in-out;
+}
+
+.instagram-post:hover {
+  animation: jump 0.5s;
+}
+
+@keyframes jump {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.instagram-post .image-container {
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%; /* This creates a 1:1 aspect ratio */
+  position: relative;
+  overflow: hidden;
+}
+
+.instagram-post img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+body {
+  text-align: center;
+}
+
+/* Add these styles to your existing CSS */
+
+.post-comments {
+  padding: 10px;
+  background-color: #f8f8f8;
+  border-top: 1px solid #e0e0e0;
+}
+
+.comment-input {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.comment-input input {
+  flex-grow: 1;
+  padding: 8px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.comment-input button {
+  padding: 8px 15px;
+  background-color: #0095f6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.comment-input button:hover {
+  background-color: #0081d6;
+}
+
+.comment {
+  margin-bottom: 8px;
+  padding: 8px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-left: auto;
+}
+
+.comment-input input {
+  flex-grow: 1;
+  padding: 8px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+h1 {
+  text-align: center;
+  color: #000;
+  font-size: 6vw;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+#fetch-button {
+  background-color: #0095f6;
+  color: white;
+  padding: 10px 20px;
+  margin: 20px auto;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: transform 0.5s;
+}
+
+#fetch-button:hover {
+  animation: shake 0.5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+h1:hover {
+  color: #0095f6;
+  text-decoration: underline;
+}
