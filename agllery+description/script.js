@@ -1,4 +1,4 @@
-const galleryGrid = document.querySelector("#gallery-grid");
+const galleryGrid = document.querySelector(".gallery-grid");
 
 const images = [
   { image: "https://picsum.photos/id/1/200/300", description: "Description 1" },
