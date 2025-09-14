@@ -24,25 +24,6 @@ async function getWeather() {
   } finally {
     showLoading(false);
   }
-
-  // try {
-  //   const response = await fetch(
-  //     `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${encodeURIComponent(
-  //       city
-  //     )}&aqi=no`
-  //   );
-  //   console.log(response);
-  //   if (!response.ok) throw new Error("City not found");
-
-  //   const data = await response.json();
-  //   console.log(data);
-  //   displayWeather(data);
-  // } catch (error) {
-  //   showError(error.message);
-  //   weatherContainer.innerHTML = "";
-  // } finally {
-  //   showLoading(false);
-  // }
 }
 
 function displayWeather(data) {
