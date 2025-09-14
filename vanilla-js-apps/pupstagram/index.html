@@ -6,23 +6,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pupstagram</title>
     <link rel="stylesheet" href="styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
     <header>
-        <h1>Pupstagram</h1>
-        <p>Discover adorable dog pictures from around the world</p>
+        <nav>
+            <div class="logo">
+                <a href="#">Pupstagram</a>
+            </div>
+            <div class="search-bar">
+                <i class='bx bx-search'></i>
+                <input type="text" placeholder="Search">
+            </div>
+            <div class="nav-icons">
+                <a href="#"><i class='bx bxs-home'></i></a>
+                <a href="#"><i class='bx bxl-messenger'></i></a>
+                <a href="#"><i class='bx bx-add-to-queue'></i></a>
+                <a href="#"><i class='bx bx-compass'></i></a>
+                <a href="#"><i class='bx bx-heart'></i></a>
+                <a href="#" class="user-profile"><img src="https://randomuser.me/api/portraits/men/1.jpg" alt=""></a>
+            </div>
+        </nav>
     </header>
     <main>
-        <section id="fetch-section">
-            <button id="fetch-button">Get More</button>
-        </section>
-        <section id="feed">
-        </section>
+        <div class="feed-container">
+            <div id="feed">
+                <!-- Posts will be injected here by JavaScript -->
+            </div>
+        </div>
+        <div class="sidebar">
+            <div class="user-profile-sidebar">
+                <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="">
+                <div class="user-info">
+                    <p class="username">@malhub_frontend</p>
+                    <p class="name">Malhub Student</p>
+                </div>
+            </div>
+            <div class="suggestions">
+                <p class="suggestions-title">Suggestions For You</p>
+                <!-- Suggestions will be injected here -->
+            </div>
+        </div>
     </main>
-    <footer>
-        <p>&copy; 2023 Pupstagram. All rights reserved.</p>
-    </footer>
     <script src="script.js"></script>
 </body>
 

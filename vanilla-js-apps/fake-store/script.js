@@ -1,26 +1,39 @@
-fetch("https://fakestoreapi.com/products")
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    return response.json();
-  })
-  .then((data) => {
-    console.log(data);
-    let storeItemsElement = document.getElementById("store-items");
-    storeItemsElement.innerHTML = "";
-    for (let i = 0; i < data.length; i++) {
-      let itemDiv = document.createElement("div");
-      itemDiv.innerHTML = `
-                <h2>${data[i].title}</h2>
-                <p>Price: ${data[i].price}</p>
-                <p>Category: ${data[i].category}</p>
-                <p>Description: ${data[i].description}</p>
-                <img src="${data[i].image}" alt="${data[i].title}">
+document.addEventListener('DOMContentLoaded', () => {
+    const storeItemsElement = document.getElementById("store-items");
+
+    const fetchProducts = async () => {
+        try {
+            const response = await fetch("https://fakestoreapi.com/products");
+            if (!response.ok) {
+                throw new Error(`Network response was not ok: ${response.statusText}`);
+            }
+            const data = await response.json();
+            displayProducts(data);
+        } catch (error) {
+            console.error("There was a problem with the fetch operation:", error);
+            storeItemsElement.innerHTML = "<p>Failed to load products. Please try again later.</p>";
+        }
+    };
+
+    const displayProducts = (products) => {
+        storeItemsElement.innerHTML = "";
+        products.forEach(product => {
+            const itemCard = document.createElement("div");
+            itemCard.className = "item-card";
+
+            itemCard.innerHTML = `
+                <img src="${product.image}" alt="${product.title}">
+                <div class="item-content">
+                    <h2>${product.title}</h2>
+                    <p class="price">$${product.price.toFixed(2)}</p>
+                    <p class="category">${product.category}</p>
+                    <p class="description">${product.description.substring(0, 100)}...</p>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
             `;
-      storeItemsElement.appendChild(itemDiv);
-    }
-  })
-  .catch((error) => {
-    console.error("There was a problem with the fetch operation:", error);
-  });
+            storeItemsElement.appendChild(itemCard);
+        });
+    };
+
+    fetchProducts();
+});

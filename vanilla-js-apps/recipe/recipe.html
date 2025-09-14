@@ -6,30 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random Meal Generator</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
 </head>
 
 <body>
-    <div class="container">
-        <button id="generateBtn" onclick="getMeal()">Suprise me</button>
-        <div id="loading">
-            <div class="spinner"></div>
-            Please hang tight as we fetch a recipe from around the globe just for you...
-        </div>
-        <div id="meal">
-            <div class="meal-header">
-                <img id="meal-image" src="" alt="Meal image">
-                <div class="meal-info">
-                    <h2 id="meal-title"></h2>
-                    <p id="meal-category"></p>
-                    <p id="meal-area"></p>
+    <header>
+        <h1>Random Meal Generator</h1>
+        <p>Get inspired with a new recipe every day!</p>
+    </header>
+    <main>
+        <div class="container">
+            <button id="generateBtn">Get a Random Meal</button>
+            <div id="loading">
+                <div class="spinner"></div>
+                <p>Fetching a delicious recipe for you...</p>
+            </div>
+            <div id="meal" class="hidden">
+                <div class="meal-card">
+                    <div class="meal-header">
+                        <img id="meal-image" src="" alt="Meal image">
+                        <div class="meal-summary">
+                            <h2 id="meal-title"></h2>
+                            <div class="meal-tags">
+                                <span id="meal-category"></span>
+                                <span id="meal-area"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="meal-body">
+                        <div class="meal-ingredients">
+                            <h3>Ingredients</h3>
+                            <ul id="ingredients-list"></ul>
+                        </div>
+                        <div class="meal-instructions">
+                            <h3>Instructions</h3>
+                            <p id="instructions-text"></p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <h3>Instructions</h3>
-            <p id="meal-instructions"></p>
-            <h3>Ingredients</h3>
-            <div id="ingredients"></div>
         </div>
-    </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 Recipe Finder. All rights reserved.</p>
+    </footer>
     <script src="script.js"></script>
 </body>
 

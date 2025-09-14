@@ -1,62 +1,123 @@
-function addComment(commentSection) {
-  const commentInput = commentSection.querySelector("input");
-  const commentText = commentInput.value;
-  if (commentText.trim() !== "") {
-    const newComment = `<p class="comment">${commentText} on ${new Date().toLocaleString()}</p>`;
-    commentSection.insertAdjacentHTML("afterbegin", newComment);
-    commentInput.value = "";
-  }
-}
+document.addEventListener('DOMContentLoaded', () => {
+    const feed = document.getElementById("feed");
+    const suggestionsContainer = document.querySelector(".suggestions");
+    let isFetching = false;
 
-document.addEventListener("DOMContentLoaded", () => {
-  const feed = document.getElementById("feed");
-  const fetchButton = document.getElementById("fetch-button");
+    const fetchRandomUser = async () => {
+        try {
+            const response = await fetch("https://randomuser.me/api/");
+            const data = await response.json();
+            return data.results[0];
+        } catch (error) {
+            console.error("Error fetching random user:", error);
+            return null;
+        }
+    };
 
-  function createImageElement(src) {
-    return `<img src="${src}" alt="Random dog">`;
-  }
+    const fetchDogImage = async () => {
+        try {
+            const response = await fetch("https://dog.ceo/api/breeds/image/random");
+            const data = await response.json();
+            return data.status === "success" ? data.message : null;
+        } catch (error) {
+            console.error("Error fetching dog image:", error);
+            return null;
+        }
+    };
 
-  function createLikeButton() {
-    return `<button onclick="this.textContent='Liked'; this.disabled=true;">Like</button>`;
-  }
+    const createPostElement = (user, dogImage) => {
+        if (!user || !dogImage) return;
 
-  function createCommentSection() {
-    return `
-      <div class="post-comments">
-        <input type="text" placeholder="Add a comment...">
-        <button onclick="addComment(this.parentElement)">Post</button>
-      </div>
-    `;
-  }
+        const post = document.createElement("div");
+        post.className = "instagram-post";
+        post.innerHTML = `
+            <div class="post-header">
+                <img src="${user.picture.thumbnail}" alt="${user.name.first}'s profile picture">
+                <p class="username">${user.login.username}</p>
+            </div>
+            <div class="image-container">
+                <img src="${dogImage}" alt="A random dog">
+            </div>
+            <div class="post-actions">
+                <i class='bx bx-heart'></i>
+                <i class='bx bx-comment'></i>
+                <i class='bx bx-send'></i>
+            </div>
+            <div class="post-likes">
+                <p>${Math.floor(Math.random() * 1000)} likes</p>
+            </div>
+            <div class="post-caption">
+                <p><span class="username">${user.login.username}</span> Loving this pup!</p>
+            </div>
+            <div class="post-comments"></div>
+            <div class="add-comment">
+                <input type="text" placeholder="Add a comment...">
+                <button>Post</button>
+            </div>
+        `;
 
-  function createPostElement(imgSrc) {
-    return `
-      <div class="instagram-post">
-        <div class="image-container">
-          ${createImageElement(imgSrc)}
-        </div>
-        ${createLikeButton()}
-        ${createCommentSection()}
-      </div>
-    `;
-  }
+        const likeBtn = post.querySelector(".bx-heart");
+        likeBtn.addEventListener("click", () => {
+            likeBtn.classList.toggle('bxs-heart');
+            likeBtn.style.color = likeBtn.classList.contains('bxs-heart') ? 'red' : 'black';
+        });
 
-  async function fetchDogImage() {
-    try {
-      const response = await fetch("https://dog.ceo/api/breeds/image/random");
-      const data = await response.json();
-      if (data.status === "success") {
-        feed.insertAdjacentHTML("afterbegin", createPostElement(data.message));
-      }
-    } catch (error) {
-      console.error("Error fetching dog image:", error);
+        const commentBtn = post.querySelector(".add-comment button");
+        commentBtn.addEventListener("click", () => {
+            const commentInput = post.querySelector(".add-comment input");
+            const commentText = commentInput.value;
+            if (commentText.trim() !== "") {
+                const commentsContainer = post.querySelector(".post-comments");
+                const newComment = document.createElement("p");
+                newComment.className = "comment";
+                newComment.innerHTML = `<span class="username">@malhub_frontend</span> ${commentText}`;
+                commentsContainer.appendChild(newComment);
+                commentInput.value = "";
+            }
+        });
+
+        feed.appendChild(post);
+    };
+
+    const loadNewPost = async () => {
+        isFetching = true;
+        const user = await fetchRandomUser();
+        const dogImage = await fetchDogImage();
+        createPostElement(user, dogImage);
+        isFetching = false;
+    };
+
+    const handleScroll = () => {
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100 && !isFetching) {
+            loadNewPost();
+        }
+    };
+
+    const loadSuggestions = async () => {
+        for (let i = 0; i < 5; i++) {
+            const user = await fetchRandomUser();
+            if (user) {
+                const suggestion = document.createElement("div");
+                suggestion.className = "suggestion";
+                suggestion.innerHTML = `
+                    <img src="${user.picture.thumbnail}" alt="">
+                    <div class="suggestion-info">
+                        <p class="username">${user.login.username}</p>
+                        <p class="name">Suggested for you</p>
+                    </div>
+                    <a href="#">Follow</a>
+                `;
+                suggestionsContainer.appendChild(suggestion);
+            }
+        }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Load initial posts
+    for (let i = 0; i < 3; i++) {
+        loadNewPost();
     }
-  }
 
-  fetchButton.addEventListener("click", fetchDogImage);
-
-  // Fetch initial set of dog images
-  for (let i = 0; i < 2; i++) {
-    fetchDogImage();
-  }
+    loadSuggestions();
 });

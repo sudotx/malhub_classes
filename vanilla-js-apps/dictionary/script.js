@@ -25,24 +25,6 @@ async function getDefinition() {
   }
 }
 
-function displayDefinition(datas) {
-  definitionResult.innerHTML = ""; // clear previous
-  console.log(datas);
-  const word = datas[0].word;
-  const phonetic = datas[0].phonetic || "Phonetic not available";
-  const meanings = datas[0].meanings;
-
-  definitionResult.innerHTML = `
-            <div>
-                <h3>Definition of word: ${word}</h3>
-                <p class="phonetic">${phonetic}</p>
-                <div class="meaning">
-                <h4>Part of Speech ${""}</h4>
-                </div>
-            </div>
-  `;
-}
-
 function showLoading(val) {
   if (loadingElement) {
     // Check if loadingElement exists
@@ -55,45 +37,45 @@ function showError(message) {
   errorElement.textContent = message;
 }
 
-// function displayDefinition(data) {
-//   definitionResult.innerHTML = ""; // Clear previous results
+function displayDefinition(data) {
+  definitionResult.innerHTML = ""; // Clear previous results
 
-//   const word = data[0].word;
-//   const phonetic = data[0].phonetic || "Phonetic not available";
-//   const meanings = data[0].meanings;
-//   console.log("meamings", meanings);
+  const word = data[0].word;
+  const phonetic = data[0].phonetic || "Phonetic not available";
+  const meanings = data[0].meanings;
+  console.log("meamings", meanings);
 
-//   const titleElement = document.createElement("h3");
-//   titleElement.textContent = `Definition of ${word}`;
-//   definitionResult.appendChild(titleElement);
+  const titleElement = document.createElement("h3");
+  titleElement.textContent = `Definition of ${word}`;
+  definitionResult.appendChild(titleElement);
 
-//   const phoneticElement = document.createElement("p");
-//   phoneticElement.className = "phonetic";
-//   phoneticElement.innerHTML = `<strong>Phonetic:</strong> ${phonetic}`;
-//   definitionResult.appendChild(phoneticElement);
+  const phoneticElement = document.createElement("p");
+  phoneticElement.className = "phonetic";
+  phoneticElement.innerHTML = `<strong>Phonetic:</strong> ${phonetic}`;
+  definitionResult.appendChild(phoneticElement);
 
-//   for (let i = 0; i < meanings.length; i++) {
-//     const meaning = meanings[i];
-//     const meaningDiv = document.createElement("div");
-//     meaningDiv.className = "meaning";
+  for (let i = 0; i < meanings.length; i++) {
+    const meaning = meanings[i];
+    const meaningDiv = document.createElement("div");
+    meaningDiv.className = "meaning";
 
-//     const partOfSpeechElement = document.createElement("h4");
-//     partOfSpeechElement.textContent = `Part of Speech: ${meaning.partOfSpeech}`;
-//     meaningDiv.appendChild(partOfSpeechElement);
+    const partOfSpeechElement = document.createElement("h4");
+    partOfSpeechElement.textContent = `Part of Speech: ${meaning.partOfSpeech}`;
+    meaningDiv.appendChild(partOfSpeechElement);
 
-//     for (let j = 0; j < meaning.definitions.length; j++) {
-//       const def = meaning.definitions[j];
-//       const definitionElement = document.createElement("p");
-//       definitionElement.innerHTML = `<strong>Definition:</strong> ${def.definition}`;
-//       meaningDiv.appendChild(definitionElement);
+    for (let j = 0; j < meaning.definitions.length; j++) {
+      const def = meaning.definitions[j];
+      const definitionElement = document.createElement("p");
+      definitionElement.innerHTML = `<strong>Definition:</strong> ${def.definition}`;
+      meaningDiv.appendChild(definitionElement);
 
-//       if (def.example) {
-//         const exampleElement = document.createElement("p");
-//         exampleElement.innerHTML = `<em>Example:</em> ${def.example}`;
-//         meaningDiv.appendChild(exampleElement);
-//       }
-//     }
+      if (def.example) {
+        const exampleElement = document.createElement("p");
+        exampleElement.innerHTML = `<em>Example:</em> ${def.example}`;
+        meaningDiv.appendChild(exampleElement);
+      }
+    }
 
-//     definitionResult.appendChild(meaningDiv);
-//   }
-// }
+    definitionResult.appendChild(meaningDiv);
+  }
+}

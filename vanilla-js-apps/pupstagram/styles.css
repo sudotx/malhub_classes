@@ -1,167 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #fafafa;
+    color: #262626;
+    margin: 0;
+}
+
+header {
+    background-color: #fff;
+    border-bottom: 1px solid #dbdbdb;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 975px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 54px;
+}
+
+.logo a {
+    font-family: 'Grand Hotel', cursive;
+    font-size: 2rem;
+    color: #262626;
+    text-decoration: none;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #fafafa;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
+    padding: 5px 10px;
+    width: 215px;
+}
+
+.search-bar i {
+    color: #8e8e8e;
+}
+
+.search-bar input {
+    border: none;
+    background-color: transparent;
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+.search-bar input:focus {
+    outline: none;
+}
+
+.nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-icons a {
+    color: #262626;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+.nav-icons .user-profile img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    max-width: 975px;
+    margin: 30px auto;
+    padding: 0 20px;
+    gap: 30px;
+}
+
+.feed-container {
+    width: 614px;
+}
+
 #feed {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .instagram-post {
-  width: 100%;
-  max-width: 600px;
-  background-color: #ffffff;
-  border: 1px solid #dbdbdb;
-  border-radius: 3px;
-  margin-bottom: 2rem;
-  transition: transform 0.5s ease-in-out;
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
 }
 
-.instagram-post:hover {
-  animation: jump 0.5s;
+.post-header {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
 }
 
-@keyframes jump {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+.post-header img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 10px;
 }
 
-.instagram-post .image-container {
-  width: 100%;
-  height: 0;
-  padding-bottom: 100%; /* This creates a 1:1 aspect ratio */
-  position: relative;
-  overflow: hidden;
+.post-header .username {
+    font-weight: 600;
 }
 
-.instagram-post img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.image-container img {
+    width: 100%;
+    height: auto;
 }
 
-body {
-  text-align: center;
+.post-actions {
+    padding: 10px 15px;
 }
 
-/* Add these styles to your existing CSS */
+.post-actions i {
+    font-size: 1.5rem;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.post-likes {
+    padding: 0 15px;
+    font-weight: 600;
+}
+
+.post-caption {
+    padding: 5px 15px;
+}
+
+.post-caption .username {
+    font-weight: 600;
+    margin-right: 5px;
+}
 
 .post-comments {
-  padding: 10px;
-  background-color: #f8f8f8;
-  border-top: 1px solid #e0e0e0;
-}
-
-.comment-input {
-  display: flex;
-  margin-bottom: 10px;
-}
-
-.comment-input input {
-  flex-grow: 1;
-  padding: 8px;
-  border: 1px solid #e0e0e0;
-  border-radius: 4px;
-  margin-right: 10px;
-}
-
-.comment-input button {
-  padding: 8px 15px;
-  background-color: #0095f6;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.comment-input button:hover {
-  background-color: #0081d6;
+    padding: 5px 15px 15px;
 }
 
 .comment {
-  margin-bottom: 8px;
-  padding: 8px;
-  background-color: white;
-  border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  margin-left: auto;
+    margin-bottom: 5px;
 }
 
-.comment-input input {
-  flex-grow: 1;
-  padding: 8px;
-  border: 1px solid #e0e0e0;
-  border-radius: 4px;
-  margin-right: 10px;
+.comment .username {
+    font-weight: 600;
+    margin-right: 5px;
 }
 
-h1 {
-  text-align: center;
-  color: #000;
-  font-size: 6vw;
-  text-transform: uppercase;
-  margin-bottom: 20px;
+.add-comment {
+    display: flex;
+    padding: 10px 15px;
+    border-top: 1px solid #efefef;
 }
 
-#fetch-button {
-  background-color: #0095f6;
-  color: white;
-  padding: 10px 20px;
-  margin: 20px auto;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1.2rem;
-  transition: transform 0.5s;
+.add-comment input {
+    flex-grow: 1;
+    border: none;
+    background-color: transparent;
 }
 
-#fetch-button:hover {
-  animation: shake 0.5s;
-  animation-iteration-count: infinite;
+.add-comment input:focus {
+    outline: none;
 }
 
-@keyframes shake {
-  0% {
-    transform: translate(1px, 1px) rotate(0deg);
-  }
-  10% {
-    transform: translate(-1px, -2px) rotate(-1deg);
-  }
-  20% {
-    transform: translate(-3px, 0px) rotate(1deg);
-  }
-  30% {
-    transform: translate(3px, 2px) rotate(0deg);
-  }
-  40% {
-    transform: translate(1px, -1px) rotate(1deg);
-  }
-  50% {
-    transform: translate(-1px, 2px) rotate(-1deg);
-  }
-  60% {
-    transform: translate(-3px, 1px) rotate(0deg);
-  }
-  70% {
-    transform: translate(3px, 1px) rotate(-1deg);
-  }
-  80% {
-    transform: translate(-1px, -1px) rotate(1deg);
-  }
-  90% {
-    transform: translate(1px, 2px) rotate(0deg);
-  }
-  100% {
-    transform: translate(1px, -2px) rotate(-1deg);
-  }
+.add-comment button {
+    border: none;
+    background-color: transparent;
+    color: #0095f6;
+    font-weight: 600;
+    cursor: pointer;
 }
 
-h1:hover {
-  color: #0095f6;
-  text-decoration: underline;
+.sidebar {
+    width: 293px;
+}
+
+.user-profile-sidebar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.user-profile-sidebar img {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.user-profile-sidebar .username {
+    font-weight: 600;
+}
+
+.user-profile-sidebar .name {
+    color: #8e8e8e;
+}
+
+.suggestions-title {
+    font-weight: 600;
+    color: #8e8e8e;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+    .feed-container {
+        width: 100%;
+    }
+    .search-bar {
+        display: none;
+    }
 }

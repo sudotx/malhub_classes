@@ -1,121 +1,167 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Arial", sans-serif;
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 0;
+    padding: 0;
 }
 
-body {
-  background-color: #f5f5f5;
-  padding: 2rem;
+header {
+    background-color: #fff;
+    text-align: center;
+    padding: 2rem 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #212529;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    color: #6c757d;
+}
+
+main {
+    padding: 2rem 1rem;
 }
 
 .container {
-  max-width: 800px;
-  margin: 0 auto;
-  background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
 }
 
-h1 {
-  text-align: center;
-  color: #333;
-  margin-bottom: 2rem;
+#generateBtn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-bottom: 2rem;
 }
 
-button {
-  display: block;
-  margin: 0 auto 2rem;
-  padding: 1rem 2rem;
-  font-size: 1.1rem;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-button:hover {
-  background-color: #45a049;
-}
-
-#meal {
-  display: none;
-}
-
-#meal.active {
-  display: block;
-}
-
-.meal-header {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  margin-bottom: 2rem;
-}
-
-#meal-image {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-.meal-info h2 {
-  color: #333;
-  margin-bottom: 0.5rem;
-}
-
-.meal-info p {
-  color: #666;
-  margin-bottom: 0.5rem;
-}
-
-#meal-instructions {
-  margin-bottom: 2rem;
-  line-height: 1.6;
-}
-
-#ingredients {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.ingredient {
-  background-color: #f8f8f8;
-  padding: 0.5rem;
-  border-radius: 4px;
+#generateBtn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
 }
 
 #loading {
-  text-align: center;
-  display: none;
+    display: none;
+    text-align: center;
+    padding: 2rem;
 }
 
 #loading.active {
-  display: block;
+    display: block;
 }
 
 .spinner {
-  border: 8px solid #f3f3f3;
-  border-top: 8px solid #3498db;
-  border-radius: 50%;
-  width: 40px; /* Size of the spinner */
-  height: 40px; /* Size of the spinner */
-  animation: spin 1s linear infinite; /* Animation */
-  margin: 0 auto; /* Center the spinner */
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #007bff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem;
+}
+
+#meal.hidden {
+    display: none;
+}
+
+.meal-card {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    overflow: hidden;
+}
+
+.meal-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#meal-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.meal-summary {
+    padding: 1.5rem;
+    width: 100%;
+}
+
+#meal-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.meal-tags span {
+    background-color: #e9ecef;
+    color: #495057;
+    padding: 0.3rem 0.8rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+}
+
+.meal-body {
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+}
+
+.meal-ingredients h3, .meal-instructions h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 0.5rem;
+}
+
+#ingredients-list {
+    list-style: none;
+    padding: 0;
+}
+
+#ingredients-list li {
+    background-color: #f8f9fa;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+}
+
+#instructions-text {
+    line-height: 1.8;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-top: 2rem;
+    background-color: #343a40;
+    color: #fff;
 }
 
 @keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+    .meal-body {
+        grid-template-columns: 1fr;
+    }
 }
